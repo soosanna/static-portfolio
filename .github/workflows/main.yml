@@ -1,16 +1,16 @@
-name: Upload Website
+name: Deploy to S3
 
 on:
   push:
     branches:
-    - master
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -18,16 +18,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Build Project
+      - name: Build project
         run: npm run build
 
-      - name: Deploy to S3
+      - name: Sync to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
-          args: --acl public-read --delete
+          args: --acl public-read --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
         env:
           AWS_S3_BUCKET: ${{ secrets.S3_BUCKET_NAME }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
