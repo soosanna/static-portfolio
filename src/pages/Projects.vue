@@ -18,7 +18,8 @@ import { ref } from 'vue'
 const projects = ref([
   { id: 1, title: 'AWS CI/CD Pipeline', link: 'https://github.com/yourrepo/aws-ci-cd' },
   { id: 2, title: 'Portfolio Website', link: 'https://github.com/yourrepo/portfolio-website' },
-  { id: 3, title: 'LAMP Stack Deployment', link: 'https://github.com/yourrepo/lamp-stack' }
+  { id: 3, title: 'LAMP Stack Deployment', link: 'https://github.com/yourrepo/lamp-stack' },
+  { id: 4, title: 'Serverless Project Using Lambda', link: 'https://github.com/soosanna/cloud-resume'}
 ])
 </script>
 
